@@ -1,3 +1,4 @@
+#Função que posiciona o navio no grid (retorna suas coordenadas com [linha,coluna])
 def define_posicoes (linha, coluna, orientacao, tamanho):
     posicao = []
     for i in range(tamanho):

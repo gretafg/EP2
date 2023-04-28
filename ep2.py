@@ -11,6 +11,7 @@ def define_posicoes (linha, coluna, orientacao, tamanho):
         posicao.append(lista)
     return posicao
 
+#Função que faz a jogada (define 'X' quando atingir o barco e '-' quando for água)
 def faz_jogada (tabuleiro, linha, coluna):
 
     if tabuleiro[linha][coluna] == 1:

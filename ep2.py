@@ -19,3 +19,21 @@ def faz_jogada (tabuleiro, linha, coluna):
     else:
         tabuleiro[linha][coluna]='-'
     return tabuleiro
+
+#Função que valida se o navio cabe nos espaços dependendo do seu tamanho e orientação
+def posicao_valida(infos_navios,linha,coluna,orientacao,tamanho):
+    resp = True
+    posicoes = define_posicoes(linha,coluna,orientacao,tamanho)
+    for i in range(len(posicoes)):
+        coordenadas = posicoes[i]
+        l = coordenadas[0]
+        c = coordenadas[1]
+        if l>=10 or c>=10:
+            return False
+        for tipo in infos_navios.values():
+            for b in range(len(tipo)):
+                navio = tipo[b]
+                for a in range(len(navio)):
+                    if navio[a]==coordenadas:
+                        return False
+    return resp

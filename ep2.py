@@ -39,3 +39,20 @@ def posiciona_frota(frota):
                             grid[linha][coordenada]=1
     return grid
     
+def afundados(dici_info, tabuleiro):
+    qntd_navios = 0
+    for tipo in dici_info.keys():
+        infos = dici_info[tipo]
+        for i in range(len(infos)):
+            navio = infos[i]
+            afundado = True 
+            for a in range(len(navio)):
+                coordenadas = navio[a]
+                linha = coordenadas[0]
+                coluna = coordenadas[1]
+                if tabuleiro[linha][coluna] != 'X':
+                    afundado = False
+                    break 
+            if afundado:
+                qntd_navios += 1
+    return qntd_navios

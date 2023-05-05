@@ -56,3 +56,11 @@ def afundados(dici_info, tabuleiro):
             if afundado:
                 qntd_navios += 1
     return qntd_navios
+
+def posicao_valida (dic, linha, coluna, orientacao, tamanho):
+    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+    if posicao not in dic:
+        pvalid = True
+    else:
+        pvalid = False
+    return pvalid

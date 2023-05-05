@@ -102,7 +102,7 @@ while i != len(nomes):
     print('Insira as informações referentes ao navio {} que possui tamanho {}' .format(nome,tamanho))
     linha = int(input('Insira aqui a linha'))
     coluna = int(input('Insira aqui a coluna'))
-    orientacao = 1
+    orientacao = 'vertical'
     if tamanho!=1:
         orientacao = int(input('Qual a orientação'))
         if orientacao!=1 and orientacao!=2:

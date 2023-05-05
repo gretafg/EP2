@@ -57,10 +57,19 @@ def afundados(dici_info, tabuleiro):
                 qntd_navios += 1
     return qntd_navios
 
-def posicao_valida (dic, linha, coluna, orientacao, tamanho):
-    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
-    if posicao not in dic:
-        pvalid = True
-    else:
-        pvalid = False
-    return pvalid
+def posicao_valida(infos_navios,linha,coluna,orientacao,tamanho):
+    resp = True
+    posicoes = define_posicoes(linha,coluna,orientacao,tamanho)
+    for i in range(len(posicoes)):
+        coordenadas = posicoes[i]
+        l = coordenadas[0]
+        c = coordenadas[1]
+        if l>=10 or c>=10:
+            return False
+        for tipo in infos_navios.values():
+            for b in range(len(tipo)):
+                navio = tipo[b]
+                for a in range(len(navio)):
+                    if navio[a]==coordenadas:
+                        return False
+    return resp

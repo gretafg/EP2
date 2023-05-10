@@ -95,6 +95,7 @@ frota = {
 
 nomes = ['porta-aviões','navio-tanque','navio-tanque','contratorpedeiro','contratorpedeiro','contratorpedeiro','submarino','submarino','submarino','submarino']
 tamanhos = {'porta-aviões':4,'navio-tanque':3,'contratorpedeiro':2,'submarino':1}
+valores = [0,1,2,3,4,5,6,7,8,9,'1','2','3','4','5','6','7','8','9','0']
 i = 0
 while i != len(nomes):
     nome = nomes[i]
@@ -102,25 +103,28 @@ while i != len(nomes):
     print('Insira as informações referentes ao navio {} que possui tamanho {}' .format(nome,tamanho))
     linha = int(input('Insira aqui a linha'))
     coluna = int(input('Insira aqui a coluna'))
-    orientacao = 1
-    if tamanho!=1:
-        orientacao = int(input('Qual a orientação'))
-        if orientacao!=1 and orientacao!=2:
-            orientacao = 'invalida'
-        elif orientacao==1:
-            orientacao='vertical'
-        elif orientacao==2:
-            orientacao = 'horizontal'
-
-    if orientacao!='invalida':
-        valida = posicao_valida(frota,linha,coluna,orientacao,tamanho)
-        if valida==False:
-            print('Esta posição não está válida!')
-        else:
-            frota=preenche_frota(frota,nome,linha,coluna,orientacao,tamanho)
-            i+=1
-    else:
+    if linha<0 or linha>9 or coluna<0 or coluna>9:
         print('Esta posição não está válida!')
+    else:
+        orientacao = 'vertical'
+        if tamanho!=1:
+            orientacao = int(input('Qual a orientação'))
+            if orientacao!=1 and orientacao!=2:
+                orientacao = 'invalida'
+            elif orientacao==1:
+                orientacao='vertical'
+            elif orientacao==2:
+                orientacao = 'horizontal'
+
+        if orientacao!='invalida':
+            valida = posicao_valida(frota,linha,coluna,orientacao,tamanho)
+            if valida==False:
+                print('Esta posição não está válida!')
+            else:
+                frota=preenche_frota(frota,nome,linha,coluna,orientacao,tamanho)
+                i+=1
+        else:
+            print('Esta posição não está válida!')
 
 frota_oponente = {
     'porta-aviões': [
